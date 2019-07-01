@@ -13,7 +13,7 @@ const AddTodo = () => {
       <h1>AddTodo</h1>
       <form>
         <input />
-        <button>Button</button>
+        <button style={{ display: "none" }}>Add Task</button>
       </form>
     </div>
   );
