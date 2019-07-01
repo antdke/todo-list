@@ -6,6 +6,7 @@
  */
 
 import React, { useState } from "react";
+import TodoItems from "./TodoItems";
 
 const AddTodo = () => {
   const [task, setTask] = useState("");
@@ -24,6 +25,7 @@ const AddTodo = () => {
         </button>
       </form>
       <h3>{task}</h3>
+      <TodoItems />
     </div>
   );
 };
