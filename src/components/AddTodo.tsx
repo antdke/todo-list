@@ -5,16 +5,25 @@
  * those items into a list.
  */
 
-import React from "react";
+import React, { useState } from "react";
 
 const AddTodo = () => {
+  const [task, setTask] = useState("");
+
   return (
     <div>
       <h1>AddTodo</h1>
       <form>
-        <input />
-        <button style={{ display: "none" }}>Add Task</button>
+        <input
+          type="text"
+          placeholder="Add Task..."
+          onChange={event => setTask(event.target.value)}
+        />
+        <button style={{ display: "none" }} onClick={() => setTask(task)}>
+          Add Task
+        </button>
       </form>
+      <h3>{task}</h3>
     </div>
   );
 };
