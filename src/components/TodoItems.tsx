@@ -6,7 +6,11 @@
 
 import React from "react";
 
-const TodoItems = () => {
+type TodoProps = {
+  task: string;
+};
+
+const TodoItems: React.FC<TodoProps> = ({ task }) => {
   return (
     <div>
       <h1>TodoItems</h1>
