@@ -7,3 +7,5 @@ const TodoItems = () => {
     </div>
   );
 };
+
+export default TodoItems;
