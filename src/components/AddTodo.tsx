@@ -10,7 +10,11 @@ import TodoItems from "./TodoItems";
 //import TodoItems from "./TodoItems";
 
 const AddTodo = () => {
-  const [todo, setTodo] = useState("");
+  const [todo, setTodo] = useState("" as any);
+
+  function handleSubmit(todoValue: string) {
+    setTodo([...todo, todoValue]);
+  }
 
   return (
     <div>
@@ -18,13 +22,14 @@ const AddTodo = () => {
       <form
         onSubmit={event => {
           event.preventDefault();
+          handleSubmit(todo);
         }}
       >
         <input
           type="text"
           placeholder="Add Task..."
           onChange={event => setTodo(event.target.value)}
-          value={todo}
+          //value={todo}
         />
         <button type="submit" style={{ display: "none" }}>
           Add Task
