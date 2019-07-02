@@ -5,15 +5,22 @@
  */
 
 import React from "react";
+import TodoItem from "./TodoItem";
 
 type TodoProps = {
   task: string;
 };
 
+const taskList: string[] = [];
+
 const TodoItems: React.FC<TodoProps> = ({ task }) => {
+  //const taskList: string[] = [];
+  const taskListMapped = taskList.map((task, index) => {
+    return <TodoItem task={task} />;
+  });
   return (
     <div>
-      <h1>TodoItems</h1>
+      <ul>{taskListMapped}</ul>
     </div>
   );
 };

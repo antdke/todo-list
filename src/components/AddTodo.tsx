@@ -7,25 +7,31 @@
 
 import React, { useState } from "react";
 import TodoItems from "./TodoItems";
+//import TodoItems from "./TodoItems";
 
 const AddTodo = () => {
-  const [task, setTask] = useState("");
+  const [todo, setTodo] = useState("");
 
   return (
     <div>
       <h1>AddTodo</h1>
-      <form>
+      <form
+        onSubmit={event => {
+          event.preventDefault();
+        }}
+      >
         <input
           type="text"
           placeholder="Add Task..."
-          onChange={event => setTask(event.target.value)}
+          onChange={event => setTodo(event.target.value)}
+          value={todo}
         />
-        <button style={{ display: "none" }} onClick={() => setTask(task)}>
+        <button type="submit" style={{ display: "none" }}>
           Add Task
         </button>
       </form>
-      <h3>{task}</h3>
-      <TodoItems task={task} />
+      <h3>{todo}</h3>
+      <ul>{TodoItems}</ul>
     </div>
   );
 };
