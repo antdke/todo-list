@@ -5,29 +5,56 @@
  * those items into a list.
  */
 
-import React, { useState } from "react";
+import React, { FormEvent } from "react";
 import TodoItems from "./TodoItems";
+//import TodoItems from "./TodoItems";
 
-const AddTodo = () => {
-  const [task, setTask] = useState("");
-
-  return (
-    <div>
-      <h1>AddTodo</h1>
-      <form>
-        <input
-          type="text"
-          placeholder="Add Task..."
-          onChange={event => setTask(event.target.value)}
-        />
-        <button style={{ display: "none" }} onClick={() => setTask(task)}>
-          Add Task
-        </button>
-      </form>
-      <h3>{task}</h3>
-      <TodoItems />
-    </div>
-  );
+type MyState = {
+  newTodo: string;
+  todos: string[];
 };
+
+class AddTodo extends React.Component<{}, MyState> {
+  constructor(props: any) {
+    super(props);
+
+    this.state = {
+      todos: [""],
+      newTodo: ""
+    };
+  }
+
+  handleChange = (event: any) => {
+    this.setState({ newTodo: event.target.value });
+  };
+
+  handleSubmit = (event: FormEvent) => {
+    event.preventDefault();
+    const newTodos = [this.state.newTodo, ...this.state.todos];
+    this.setState({ todos: newTodos, newTodo: "" });
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>AddTodo</h1>
+        <form onSubmit={this.handleSubmit}>
+          <input
+            type="text"
+            placeholder="Add Task..."
+            onChange={this.handleChange}
+            //value={todo}
+          />
+          <button type="submit" style={{ display: "none" }}>
+            Add Task
+          </button>
+        </form>
+        {this.state.todos.map(todo => (
+          <li>{todo}</li>
+        ))}
+      </div>
+    );
+  }
+}
 
 export default AddTodo;
