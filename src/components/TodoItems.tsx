@@ -7,20 +7,20 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-type TodoProps = {
-  task: string;
-};
+// type TodoProps = {
+//   task: string;
+// };
 
-const taskList: string[] = [];
+//const taskList: string[] = [];
 
-const TodoItems: React.FC<TodoProps> = ({ task }) => {
+const TodoItems = ({ todo }: any) => {
   //const taskList: string[] = [];
-  const taskListMapped = taskList.map((task, index) => {
-    return <TodoItem task={task} />;
+  const todoList: any = todo.map((todo: any, index: any) => {
+    return <TodoItem todo={todo} />;
   });
   return (
     <div>
-      <ul>{taskListMapped}</ul>
+      <ul>{todoList}</ul>
     </div>
   );
 };
