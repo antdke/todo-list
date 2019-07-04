@@ -22,6 +22,12 @@ class AddTodo extends React.Component<{}, MyState> {
     };
   }
 
+  // deletes todo items
+  deleteTodo = (deletedTodo: string) => {
+    const newTodos = this.state.todos.filter(todo => todo !== deletedTodo);
+    this.setState({ todos: newTodos });
+  };
+
   handleChange = (event: any) => {
     this.setState({ newTodo: event.target.value });
   };
@@ -49,7 +55,7 @@ class AddTodo extends React.Component<{}, MyState> {
         </form>
         {this.state.todos.map(todo => (
           <div>
-            <button> X </button>
+            <button onClick={() => this.deleteTodo(todo)}> X </button>
             {" " + todo}
           </div>
         ))}
