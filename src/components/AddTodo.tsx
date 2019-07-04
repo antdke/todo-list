@@ -19,7 +19,7 @@ class AddTodo extends React.Component<{}, MyState> {
     super(props);
 
     this.state = {
-      todos: [""],
+      todos: [],
       newTodo: ""
     };
   }
