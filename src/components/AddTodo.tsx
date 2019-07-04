@@ -6,8 +6,6 @@
  */
 
 import React, { FormEvent } from "react";
-import TodoItems from "./TodoItems";
-//import TodoItems from "./TodoItems";
 
 type MyState = {
   newTodo: string;
