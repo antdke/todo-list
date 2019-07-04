@@ -50,7 +50,10 @@ class AddTodo extends React.Component<{}, MyState> {
           </button>
         </form>
         {this.state.todos.map(todo => (
-          <li>{todo}</li>
+          <div>
+            <button> X </button>
+            {" " + todo}
+          </div>
         ))}
       </div>
     );
