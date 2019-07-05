@@ -47,7 +47,7 @@ class AddTodo extends React.Component<{}, MyState> {
             type="text"
             placeholder="Add Task..."
             onChange={this.handleChange}
-            //value={todo}
+            value={this.state.newTodo}
           />
           <button type="submit" style={{ display: "none" }}>
             Add Task
