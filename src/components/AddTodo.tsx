@@ -34,8 +34,12 @@ class AddTodo extends React.Component<{}, MyState> {
 
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const newTodos = [this.state.newTodo, ...this.state.todos];
-    this.setState({ todos: newTodos, newTodo: "" });
+    var newTodos = [this.state.newTodo];
+    if (this.state.newTodo !== "") {
+      newTodos = [this.state.newTodo, ...this.state.todos];
+      this.setState({ todos: newTodos, newTodo: "" });
+    }
+    newTodos = [];
   };
 
   render() {
