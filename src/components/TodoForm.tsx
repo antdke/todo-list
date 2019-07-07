@@ -10,7 +10,7 @@ import TodoItem from "./TodoItem";
 import injectSheet from "react-jss";
 
 //styles
-const styles = {
+const styles = (theme: any) => ({
   input: {
     width: "60%",
     height: "56px",
@@ -19,9 +19,9 @@ const styles = {
     outline: "none",
     border: "none",
     paddingLeft: "15px",
-    background: "#d5f0f9"
+    background: theme.colorSecondary
   }
-};
+});
 
 // where I place the main theme colors
 const theme = {
