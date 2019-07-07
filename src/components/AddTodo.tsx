@@ -6,8 +6,6 @@
  */
 
 import React, { FormEvent } from "react";
-import TodoItems from "./TodoItems";
-//import TodoItems from "./TodoItems";
 
 type MyState = {
   newTodo: string;
@@ -19,10 +17,16 @@ class AddTodo extends React.Component<{}, MyState> {
     super(props);
 
     this.state = {
-      todos: [""],
+      todos: [],
       newTodo: ""
     };
   }
+
+  // deletes todo items
+  deleteTodo = (deletedTodo: string) => {
+    const newTodos = this.state.todos.filter(todo => todo !== deletedTodo);
+    this.setState({ todos: newTodos });
+  };
 
   handleChange = (event: any) => {
     this.setState({ newTodo: event.target.value });
@@ -30,8 +34,12 @@ class AddTodo extends React.Component<{}, MyState> {
 
   handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    const newTodos = [this.state.newTodo, ...this.state.todos];
-    this.setState({ todos: newTodos, newTodo: "" });
+    var newTodos = [this.state.newTodo];
+    if (this.state.newTodo !== "") {
+      newTodos = [this.state.newTodo, ...this.state.todos];
+      this.setState({ todos: newTodos, newTodo: "" });
+    }
+    newTodos = [];
   };
 
   render() {
@@ -43,14 +51,17 @@ class AddTodo extends React.Component<{}, MyState> {
             type="text"
             placeholder="Add Task..."
             onChange={this.handleChange}
-            //value={todo}
+            value={this.state.newTodo}
           />
           <button type="submit" style={{ display: "none" }}>
             Add Task
           </button>
         </form>
         {this.state.todos.map(todo => (
-          <li>{todo}</li>
+          <div>
+            <button onClick={() => this.deleteTodo(todo)}> X </button>
+            {" " + todo}
+          </div>
         ))}
       </div>
     );
