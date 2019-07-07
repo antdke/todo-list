@@ -1,3 +1,8 @@
+/**
+ * This components takes in a string prop and
+ * deleteTodo function from TodoForm.
+ */
+
 import React from "react";
 
 const TodoItem = ({ todo, deleteTodo }: any) => {
