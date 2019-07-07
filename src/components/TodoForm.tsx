@@ -19,7 +19,8 @@ const styles = (theme: any) => ({
     outline: "none",
     border: "none",
     paddingLeft: "15px",
-    background: theme.colorSecondary
+    background: theme.colorSecondary,
+    color: theme.textColor
   }
 });
 

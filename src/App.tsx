@@ -3,11 +3,13 @@ import TodoForm from "./components/TodoForm";
 import "./App.css";
 import injectSheet, { ThemeProvider } from "react-jss";
 
-//const StyledComp = injectSheet(styles)(TodoForm)
+// color of background color
+const colorPrimary = "#86ddfa";
+document.body.style.backgroundColor = colorPrimary;
 
 const theme = {
-  colorPrimary: "#d1f2fd",
-  colorSecondary: "#d5f0f9"
+  colorSecondary: "#bfedfc",
+  textColor: "#ffffff"
 };
 
 const App: React.FC = () => {
