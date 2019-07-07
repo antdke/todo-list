@@ -7,13 +7,37 @@
 
 import React, { FormEvent } from "react";
 import TodoItem from "./TodoItem";
+import injectSheet from "react-jss";
 
-type MyState = {
+//styles
+const styles = {
+  input: {
+    width: "60%",
+    height: "56px",
+    borderRadius: "4px",
+    fontSize: "16px",
+    outline: "none",
+    border: "none",
+    paddingLeft: "15px",
+    background: "#d5f0f9"
+  }
+};
+
+// where I place the main theme colors
+const theme = {
+  colorPrimary: "#d5f0f9"
+};
+
+type TodoFormState = {
   newTodo: string;
   todos: string[];
 };
 
-class TodoForm extends React.Component<{}, MyState> {
+type TodoFormProps = {
+  classes: any;
+};
+
+class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
   constructor(props: any) {
     super(props);
 
@@ -44,11 +68,13 @@ class TodoForm extends React.Component<{}, MyState> {
   };
 
   render() {
+    const { classes } = this.props;
     return (
       <div>
         <h1>TodoForm</h1>
         <form onSubmit={this.handleSubmit}>
           <input
+            className={classes.input}
             type="text"
             placeholder="Add Task..."
             onChange={this.handleChange}
@@ -66,4 +92,4 @@ class TodoForm extends React.Component<{}, MyState> {
   }
 }
 
-export default TodoForm;
+export default injectSheet(styles)(TodoForm);
