@@ -12,7 +12,7 @@ type MyState = {
   todos: string[];
 };
 
-class AddTodo extends React.Component<{}, MyState> {
+class TodoForm extends React.Component<{}, MyState> {
   constructor(props: any) {
     super(props);
 
@@ -45,7 +45,7 @@ class AddTodo extends React.Component<{}, MyState> {
   render() {
     return (
       <div>
-        <h1>AddTodo</h1>
+        <h1>TodoForm</h1>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
@@ -68,4 +68,4 @@ class AddTodo extends React.Component<{}, MyState> {
   }
 }
 
-export default AddTodo;
+export default TodoForm;
