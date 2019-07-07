@@ -6,6 +6,7 @@
  */
 
 import React, { FormEvent } from "react";
+import TodoItem from "./TodoItem";
 
 type MyState = {
   newTodo: string;
@@ -58,10 +59,7 @@ class TodoForm extends React.Component<{}, MyState> {
           </button>
         </form>
         {this.state.todos.map(todo => (
-          <div>
-            <button onClick={() => this.deleteTodo(todo)}> X </button>
-            {" " + todo}
-          </div>
+          <TodoItem todo={todo} deleteTodo={this.deleteTodo} />
         ))}
       </div>
     );
