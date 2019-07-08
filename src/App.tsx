@@ -1,15 +1,17 @@
 import React from "react";
 import TodoForm from "./components/TodoForm";
 import "./App.css";
-import injectSheet, { ThemeProvider } from "react-jss";
+import { ThemeProvider } from "react-jss";
 
 // color of background color
 const colorPrimary = "#86ddfa";
 document.body.style.backgroundColor = colorPrimary;
 
 const theme = {
-  colorSecondary: "#bfedfc",
-  textColor: "#black"
+  inputBarColor: "#bfedfc",
+  textColor: "#black",
+  todoItemColor: "#86ddfa",
+  todoItemImportantColor: "#fa86a3"
 };
 
 const App: React.FC = () => {

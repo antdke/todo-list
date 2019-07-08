@@ -19,15 +19,10 @@ const styles = (theme: any) => ({
     outline: "none",
     border: "none",
     paddingLeft: "15px",
-    background: theme.colorSecondary,
+    background: theme.inputBarColor,
     color: theme.textColor
   }
 });
-
-// where I place the main theme colors
-const theme = {
-  colorPrimary: "#d5f0f9"
-};
 
 type TodoFormState = {
   newTodo: string;
