@@ -9,7 +9,7 @@ document.body.style.backgroundColor = colorPrimary;
 
 const theme = {
   colorSecondary: "#bfedfc",
-  textColor: "#ffffff"
+  textColor: "#black"
 };
 
 const App: React.FC = () => {
