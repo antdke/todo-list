@@ -38,7 +38,11 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     super(props);
 
     this.state = {
-      todos: [],
+      todos: [
+        "Learn React",
+        "Learn Ruby",
+        "Change LinkedIn Bio to 'Full Stack' "
+      ],
       newTodo: ""
     };
   }
