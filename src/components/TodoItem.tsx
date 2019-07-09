@@ -11,19 +11,30 @@ const styles = (theme: any) => ({
   todoItem: {
     textAlign: "center",
     padding: "20px 40px",
-    width: "100px",
+    width: "250px",
     display: "flex",
-    margin: "0 auto",
+    margin: "0 10px",
+    borderRadius: "6px",
+    height: "20px",
+    whiteSpace: "nowrap",
+    //overflow: "hidden",
     backgroundColor: theme.todoItemColor
   }
 });
 
 const TodoItem = ({ todo, deleteTodo, classes }: any) => {
   return (
-    <React.Fragment>
+    <div
+      style={{
+        justifyContent: "center",
+        display: "flex",
+        flexFlow: "row wrap",
+        margin: "20px auto"
+      }}
+    >
       <section className={classes.todoItem}>{" " + todo}</section>
       <button onClick={() => deleteTodo(todo)}> X </button>
-    </React.Fragment>
+    </div>
   );
 };
 
