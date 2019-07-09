@@ -31,6 +31,7 @@ type TodoFormState = {
 
 type TodoFormProps = {
   classes: any;
+  theme: any;
 };
 
 class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
@@ -68,7 +69,7 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, theme } = this.props;
     return (
       <div>
         <h1>TodoForm</h1>
@@ -85,7 +86,7 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
           </button>
         </form>
         {this.state.todos.map(todo => (
-          <TodoItem todo={todo} deleteTodo={this.deleteTodo} />
+          <TodoItem todo={todo} deleteTodo={this.deleteTodo} theme={theme} />
         ))}
       </div>
     );

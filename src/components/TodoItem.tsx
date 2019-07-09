@@ -4,14 +4,23 @@
  */
 
 import React from "react";
+import injectSheet from "react-jss";
 
-const TodoItem = ({ todo, deleteTodo }: any) => {
+// styles
+const styles = (theme: any) => ({
+  todoItem: {
+    textAlign: "center",
+    padding: "50px"
+  }
+});
+
+const TodoItem = ({ todo, deleteTodo, classes }: any) => {
   return (
-    <div>
+    <div className={classes.todoItem}>
       <button onClick={() => deleteTodo(todo)}> X </button>
       {" " + todo}
     </div>
   );
 };
 
-export default TodoItem;
+export default injectSheet(styles)(TodoItem);
