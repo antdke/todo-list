@@ -10,16 +10,20 @@ import injectSheet from "react-jss";
 const styles = (theme: any) => ({
   todoItem: {
     textAlign: "center",
-    padding: "50px"
+    padding: "20px 40px",
+    width: "100px",
+    display: "flex",
+    margin: "0 auto",
+    backgroundColor: theme.todoItemColor
   }
 });
 
 const TodoItem = ({ todo, deleteTodo, classes }: any) => {
   return (
-    <div className={classes.todoItem}>
+    <React.Fragment>
+      <section className={classes.todoItem}>{" " + todo}</section>
       <button onClick={() => deleteTodo(todo)}> X </button>
-      {" " + todo}
-    </div>
+    </React.Fragment>
   );
 };
 

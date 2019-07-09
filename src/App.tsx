@@ -10,7 +10,7 @@ document.body.style.backgroundColor = colorPrimary;
 const theme = {
   inputBarColor: "#bfedfc",
   textColor: "#black",
-  todoItemColor: "#86ddfa",
+  todoItemColor: "#86a3fa",
   todoItemImportantColor: "#fa86a3"
 };
 
