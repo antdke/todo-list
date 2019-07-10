@@ -27,6 +27,7 @@ const styles = (theme: any) => ({
 type TodoFormState = {
   newTodo: string;
   todos: string[];
+  taskCounter: number;
 };
 
 type TodoFormProps = {
@@ -44,7 +45,8 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
         "Learn Ruby",
         "Change LinkedIn Bio to 'Full Stack' "
       ],
-      newTodo: ""
+      newTodo: "",
+      taskCounter: 0
     };
   }
 
@@ -52,6 +54,7 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
   deleteTodo = (deletedTodo: string) => {
     const newTodos = this.state.todos.filter(todo => todo !== deletedTodo);
     this.setState({ todos: newTodos });
+    this.setState({ taskCounter: this.state.taskCounter + 1 });
   };
 
   handleChange = (event: any) => {
@@ -73,6 +76,7 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     return (
       <div>
         <h1>TodoForm</h1>
+        <h3>Tasks Done:{" " + this.state.taskCounter}</h3>
         <form onSubmit={this.handleSubmit}>
           <input
             className={classes.input}
