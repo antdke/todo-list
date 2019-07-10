@@ -7,19 +7,46 @@
 
 import React, { FormEvent } from "react";
 import TodoItem from "./TodoItem";
+import injectSheet from "react-jss";
 
-type MyState = {
+//styles
+const styles = (theme: any) => ({
+  input: {
+    width: "60%",
+    height: "56px",
+    borderRadius: "4px",
+    fontSize: "16px",
+    outline: "none",
+    border: "none",
+    paddingLeft: "15px",
+    background: theme.inputBarColor,
+    color: theme.textColor
+  }
+});
+
+type TodoFormState = {
   newTodo: string;
   todos: string[];
+  taskCounter: number;
 };
 
-class TodoForm extends React.Component<{}, MyState> {
+type TodoFormProps = {
+  classes: any;
+  theme: any;
+};
+
+class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
   constructor(props: any) {
     super(props);
 
     this.state = {
-      todos: [],
-      newTodo: ""
+      todos: [
+        "Learn React",
+        "Learn Ruby",
+        "Change LinkedIn Bio to 'Full Stack' "
+      ],
+      newTodo: "",
+      taskCounter: 0
     };
   }
 
@@ -27,6 +54,7 @@ class TodoForm extends React.Component<{}, MyState> {
   deleteTodo = (deletedTodo: string) => {
     const newTodos = this.state.todos.filter(todo => todo !== deletedTodo);
     this.setState({ todos: newTodos });
+    this.setState({ taskCounter: this.state.taskCounter + 1 });
   };
 
   handleChange = (event: any) => {
@@ -44,11 +72,14 @@ class TodoForm extends React.Component<{}, MyState> {
   };
 
   render() {
+    const { classes, theme } = this.props;
     return (
       <div>
         <h1>TodoForm</h1>
+        <h3>Tasks Done:{" " + this.state.taskCounter}</h3>
         <form onSubmit={this.handleSubmit}>
           <input
+            className={classes.input}
             type="text"
             placeholder="Add Task..."
             onChange={this.handleChange}
@@ -59,11 +90,11 @@ class TodoForm extends React.Component<{}, MyState> {
           </button>
         </form>
         {this.state.todos.map(todo => (
-          <TodoItem todo={todo} deleteTodo={this.deleteTodo} />
+          <TodoItem todo={todo} deleteTodo={this.deleteTodo} theme={theme} />
         ))}
       </div>
     );
   }
 }
 
-export default TodoForm;
+export default injectSheet(styles)(TodoForm);

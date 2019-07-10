@@ -1,14 +1,26 @@
 import React from "react";
 import TodoForm from "./components/TodoForm";
 import "./App.css";
+import { ThemeProvider } from "react-jss";
+
+// color of background color
+const colorPrimary = "#86ddfa";
+document.body.style.backgroundColor = colorPrimary;
+
+const theme = {
+  inputBarColor: "#bfedfc",
+  textColor: "#black",
+  todoItemColor: "#86a3fa",
+  todoItemImportantColor: "#fa86a3"
+};
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
+    <ThemeProvider theme={theme}>
+      <div className="App">
         <TodoForm />
-      </header>
-    </div>
+      </div>
+    </ThemeProvider>
   );
 };
 
