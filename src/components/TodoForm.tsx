@@ -8,6 +8,8 @@
 import React, { FormEvent } from "react";
 import TodoItem from "./TodoItem";
 import injectSheet from "react-jss";
+import { any } from "prop-types";
+import classNames from "classnames";
 
 //styles
 const styles = (theme: any) => ({
@@ -21,6 +23,12 @@ const styles = (theme: any) => ({
     paddingLeft: "15px",
     background: theme.inputBarColor,
     color: theme.textColor
+  },
+  tasksDone: {
+    color: "green"
+  },
+  taskNotDone: {
+    color: "red"
   }
 });
 
@@ -76,7 +84,14 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     return (
       <div>
         <h1>TodoForm</h1>
-        <h3>Tasks Done:{" " + this.state.taskCounter}</h3>
+        <h3
+          className={classNames({
+            [classes.taskNotDone]: this.state.taskCounter < 10,
+            [classes.tasksDone]: this.state.taskCounter >= 10
+          })}
+        >
+          Tasks Done:{" " + this.state.taskCounter}/10
+        </h3>
         <form onSubmit={this.handleSubmit}>
           <input
             className={classes.input}
