@@ -8,6 +8,8 @@
 import React, { FormEvent } from "react";
 import TodoItem from "./TodoItem";
 import injectSheet from "react-jss";
+import { any } from "prop-types";
+import classNames from "classnames";
 
 //styles
 const styles = (theme: any) => ({
@@ -22,7 +24,10 @@ const styles = (theme: any) => ({
     background: theme.inputBarColor,
     color: theme.textColor
   },
-  taskCounter: {
+  tasksDone: {
+    color: "green"
+  },
+  taskNotDone: {
     color: "red"
   }
 });
@@ -53,8 +58,6 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     };
   }
 
-  // TODO turn the counter red when user reaches 10/10 tasks
-
   // deletes todo items
   deleteTodo = (deletedTodo: string) => {
     const newTodos = this.state.todos.filter(todo => todo !== deletedTodo);
@@ -81,7 +84,12 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     return (
       <div>
         <h1>TodoForm</h1>
-        <h3 className={classes.taskCounter}>
+        <h3
+          className={classNames({
+            [classes.taskNotDone]: this.state.taskCounter < 10,
+            [classes.tasksDone]: this.state.taskCounter >= 10
+          })}
+        >
           Tasks Done:{" " + this.state.taskCounter}/10
         </h3>
         <form onSubmit={this.handleSubmit}>
