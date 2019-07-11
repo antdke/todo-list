@@ -21,6 +21,9 @@ const styles = (theme: any) => ({
     paddingLeft: "15px",
     background: theme.inputBarColor,
     color: theme.textColor
+  },
+  taskCounter: {
+    color: "red"
   }
 });
 
@@ -50,6 +53,8 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     };
   }
 
+  // TODO turn the counter red when user reaches 10/10 tasks
+
   // deletes todo items
   deleteTodo = (deletedTodo: string) => {
     const newTodos = this.state.todos.filter(todo => todo !== deletedTodo);
@@ -76,7 +81,9 @@ class TodoForm extends React.Component<TodoFormProps, TodoFormState> {
     return (
       <div>
         <h1>TodoForm</h1>
-        <h3>Tasks Done:{" " + this.state.taskCounter}</h3>
+        <h3 className={classes.taskCounter}>
+          Tasks Done:{" " + this.state.taskCounter}/10
+        </h3>
         <form onSubmit={this.handleSubmit}>
           <input
             className={classes.input}
