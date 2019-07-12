@@ -8,7 +8,6 @@
 import React, { FormEvent } from "react";
 import TodoItem from "./TodoItem";
 import injectSheet from "react-jss";
-import { any } from "prop-types";
 import classNames from "classnames";
 
 //styles
