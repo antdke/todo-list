@@ -27,7 +27,7 @@ const styles = (theme: any) => ({
     color: "green"
   },
   taskNotDone: {
-    color: "red"
+    color: "black"
   }
 });
 
